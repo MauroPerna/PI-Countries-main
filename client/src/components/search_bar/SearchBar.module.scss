@@ -1,0 +1,25 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.searchBarContainer {
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.input {
+    width: 200px;
+}
+
+.filterContainer {
+    width: 80vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 10px;
+}

@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+
+.container {
+    margin: 0;
+    padding: 0;
+    background-image: url(../../img/mapamundi.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+    background-size: cover;
+}
+
+h1 {
+    font-family: 'Roboto Slab', serif;
+}
+
+button {
+    display: flex;
+}

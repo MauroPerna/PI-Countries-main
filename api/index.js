@@ -28,20 +28,17 @@ conn.sync({ force: true }).then(() => {
     axios.get('https://restcountries.com/v3/all')
     .then(response => {
         response.data.forEach(async (r)=> {
-            if(r.capital) {
-                let obj = {
-                    name: r.name.common,
-                    img: r.flags[0],
-                    continent: r.continents[0],
-                    capital: r.capital[0],
-                    subregion: r.subregion,
-                    area: r.area,
-                    population: r.population,
-                    map: r.maps.googleMaps,
-                    id:r.cca3,
-                }
-                await Country.create(obj);
-            }
+            await Country.create({
+                name: r.translations.spa.common,
+                img: r.flags[0],
+                continent: r.continents[0],
+                capital: r.capital ? r.capital[0] : `${r.name.common} no tiene capital`,
+                subregion: r.subregion,
+                area: r.area,
+                population: r.population,
+                map: r.maps.googleMaps,
+                id:r.cca3
+			});
         });
     })
     .catch(error => {

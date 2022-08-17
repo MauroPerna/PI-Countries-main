@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "ski",
+    "difficulty": 5,
+    "duration": "2 semanas",
+    "season": "Invierno",
+    "countries": ["USA", "ARG", "AUS"]
+  },
+  {
+    "id": 2,
+    "name": "caminatas",
+    "difficulty": 2,
+    "duration": "1 semana",
+    "season": "Verano",
+    "countries": ["USA", "ARG", "AUS"]
+  },
+  {
+    "id": 3,
+    "name": "Surf",
+    "difficulty": 5,
+    "duration": "1 semana",
+    "season": "Verano",
+    "countries": ["USA", "ARG", "AUS"]
+  }
+]

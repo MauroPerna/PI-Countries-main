@@ -1,0 +1,16 @@
+.paginado {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: center;
+}
+
+.li {
+    text-decoration: none;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
