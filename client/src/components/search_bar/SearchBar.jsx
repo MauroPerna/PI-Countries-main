@@ -9,7 +9,7 @@ import {getCountriesFiltered,
         byPopulation} from '../../redux/actions/index'
 
 
-const SearchBar = () => {
+const SearchBar = ({setCurrentPage}) => {
     
     const [input, setInput] = React.useState('')
 
@@ -25,6 +25,7 @@ const SearchBar = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         dispatch(getCountriesFiltered(input));
+        setCurrentPage(1)
     }
 
 
@@ -32,24 +33,28 @@ const SearchBar = () => {
     const handleActivities = (e) => {
         e.preventDefault();
         dispatch(byActivity(e.target.value))
+        setCurrentPage(1)
     }
 
     //manejador del selector de continentes
     const handleContinents = (e) => {
         e.preventDefault();
         dispatch(byContinent(e.target.value))
+        setCurrentPage(1)
     }
 
     //manejador del selector de orden
     const handleOrder = (e) => {
         e.preventDefault();
         dispatch(byOrder(e.target.value))
+        setCurrentPage(1)
     }
 
     //manejador del selector de population
     const handleOrderPopulation = (e) => {
         e.preventDefault();
         dispatch(byPopulation(e.target.value))
+        setCurrentPage(1)
     }
 
     useEffect(() => {

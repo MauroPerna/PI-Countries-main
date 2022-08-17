@@ -32,6 +32,12 @@ module.exports = (sequelize) => {
 		map: {
 			type: DataTypes.STRING,
 		},
+		lat: {
+			type: DataTypes.FLOAT,
+		},
+		long: {
+			type: DataTypes.FLOAT,
+		},
 		id: {
 			type: DataTypes.STRING,
 			defaultValue: DataTypes.UUIDV4,

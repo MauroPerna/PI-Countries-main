@@ -5,7 +5,7 @@ import styles from './Paginado.module.scss'
 export default function Paginado({countriesPerPage, countries, paginado}){
     const pageNumbers = [];
 
-    for (let i = 1; i <= Math.ceil(countries/countriesPerPage) ; i++) {
+    for (let i = 1; i <= Math.ceil(((countries - 9)/countriesPerPage) + 1); i++) {
         pageNumbers.push(i)  
     }
 

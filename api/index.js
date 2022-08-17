@@ -37,6 +37,8 @@ conn.sync({ force: true }).then(() => {
                 area: r.area,
                 population: r.population,
                 map: r.maps.googleMaps,
+                lat: r.latlng[0],
+                long: r.latlng[1],
                 id:r.cca3
 			});
         });

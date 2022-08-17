@@ -67,7 +67,6 @@ countries.get('/:id',  async (req, res) => {
     const {id} = req.params;
 
     const country = await Country.findAll({
-        attributes: ['name'],
         where: {id: id}
     })
 
