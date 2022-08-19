@@ -1,0 +1,39 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+    
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        justify-content: center;
+        
+        .radio {
+            display: flex;
+            justify-content: space-evenly;
+
+            .option {
+                display: flex;
+
+                * {
+                    margin: 5px;
+                }
+            }
+        }
+        
+        button {
+            width: 50px;
+        }
+    }
+
+}
+
+
+.danger {
+    color: red;
+    font-size: 15px;
+}

@@ -1,6 +1,6 @@
 const express = require('express');
 const countries = express.Router();
-const { Country } = require('../db')
+const { Country, Activity } = require('../db')
 const {Op} = require('sequelize')
 
 countries.get('/',  async (req, res) => {
@@ -67,7 +67,8 @@ countries.get('/:id',  async (req, res) => {
     const {id} = req.params;
 
     const country = await Country.findAll({
-        where: {id: id}
+        where: {id: id},
+        include: Activity
     })
 
     res.send(country)

@@ -1,0 +1,79 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    background-color: aqua;
+    
+    .containerCountryDetail {
+        width: 800px;
+        height: 500px;
+        box-sizing: border-box;
+        background-color: #0f0f;
+        border: 1px solid black;
+
+
+        //con flex
+        // display: flex;
+
+        // .containerFlagMap {
+            
+        // }
+
+        // img {
+        //     width: 250px;
+        //     height: 150px;
+        //     // position: absolute;
+        // }
+
+        // .map {
+        //     height: 100%;
+        //     width: 100%;
+        // }
+        
+        //con grid
+        display: grid;
+        grid-template-areas: "title title title"
+                             "mapflag mapflag info"
+                             "mapflag mapflag info";
+        grid-template-rows: 80px 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        // // align-items: center;
+        // justify-items: center;
+
+
+        .title {
+            grid-area: title;
+            display: flex;
+            width: 100%;
+            justify-content:center;
+        }
+
+        
+        .info {
+            grid-area: info;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .containerFlagMap {
+            grid-area: mapflag;
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            padding: 10px;
+        }
+        
+        img {
+            height: 200px;
+            width: 425px;
+            margin-bottom: 5px;
+        }
+
+        .map {
+            height: 200px;
+            width: 425px;
+        }
+    }
+}

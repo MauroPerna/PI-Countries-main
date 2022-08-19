@@ -21,7 +21,7 @@ activities.post('/',  async (req, res) => {
 
     let activity = await Activity.create({
         name: name,
-        difficulty: difficulty,
+        difficulty: parseInt(difficulty),
         duration: duration,
         season: season,
     })
