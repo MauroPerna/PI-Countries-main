@@ -4,6 +4,7 @@ import {useSelector, useDispatch}  from 'react-redux';
 import Card from '../country_card/Card';
 import styles from './Cards.module.scss';
 import Paginado from '../paginado/Paginado';
+import Loanding from '../loanding/Loanding';
 
 
 const Cards = ({currentPage, setCurrentPage}) => {
@@ -13,7 +14,7 @@ const Cards = ({currentPage, setCurrentPage}) => {
     let countriesFiltered = useSelector((state) => state.countriesFiltered);
 
     
-    const [countriesPerPage, setCountriesPerPage] = useState(10);
+    const [countriesPerPage] = useState(10);
 
 
     const indexOfLastCountry = currentPage * countriesPerPage; // 10
@@ -49,6 +50,8 @@ const Cards = ({currentPage, setCurrentPage}) => {
                 countriesPerPage={countriesPerPage}
                 countries={countriesFiltered.length > 0 ? countriesFiltered.length : countries.length}
                 paginado={paginado}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
             />
             {
                 currentCountries && currentCountries.map(country => <Card name={country.name}

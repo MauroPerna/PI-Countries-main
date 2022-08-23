@@ -5,6 +5,7 @@ import Home from './components/home/Home';
 import CountryDetails from './components/country_detail/CountryDetail'
 import CreateActivity from './components/create_activities/CreateActivities';
 import Nav from "./components/nav/Nav";
+import ModifiedActivity from './components/modified_activity/ModifiedActivity';
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 			<Route path="/home" component={Home}/>
 			<Route path="/countryDetail/:id" component={CountryDetails}/>
 			<Route path="/createActivity" component={CreateActivity}/>
+			<Route path="/modified" component={ModifiedActivity}/>
 		</React.Fragment>
 	);
 }

@@ -6,14 +6,17 @@ import {GET_COUNTRIES,
         FILTER_BY_ORDER,
         FILTER_BY_POPULATION,
         GET_COUNTRY_DETAIL,
-        RESET_COUNTRY_DETAIL} from '../actions/index'
+        RESET_COUNTRY_DETAIL,
+        GET_ACTIVITY,
+        DELETE_ACTIVITY} from '../actions/index'
 
 
 const initialState = {
 	countries: [],
     countriesFiltered: [],
     activities: [],
-    countryDetail: {}
+    countryDetail: {},
+    activityDetail: {}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -42,6 +45,20 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 activities: action.payload
+            }
+        case  GET_ACTIVITY:
+            const actividades = state.activities;
+            const actividad = actividades.find(a => a.name === action.payload) 
+            return {
+                ...state,
+                activityDetail: actividad
+            }
+        case DELETE_ACTIVITY:
+            const act = state.activities;
+            const activitiesFiltered = act.filter(a => a.name !== action.payload)
+            return {
+                ...state,
+                activities: activitiesFiltered
             }
         case FILTER_BY_ACTIVITY:
             const activities = state.activities;

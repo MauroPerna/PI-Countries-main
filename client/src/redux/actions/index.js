@@ -9,6 +9,8 @@ export const FILTER_BY_ORDER = 'FILTER_BY_ORDER';
 export const FILTER_BY_POPULATION = 'FILTER_BY_POPULATION';
 export const GET_COUNTRY_DETAIL = 'GET_COUNTRY_DETAIL';
 export const RESET_COUNTRY_DETAIL = 'RESET_COUNTRY_DETAIL';
+export const  GET_ACTIVITY = 'GET_ACTIVITY';
+export const DELETE_ACTIVITY = 'DELETE_ACTIVITY';
 
 export const getCountries = () => {
     return async function(dispatch) {
@@ -74,7 +76,8 @@ export const postActivity = (obj) => {
     return async function () {
         try {
             const res = await axios.post('http://localhost:3001/activities', obj)
-            return res;
+            alert(`La actividad: "${res.data.name}" ha sido creada`);
+            // alert(res.data);
         } catch (error) {
             console.log(error)
         }
@@ -83,4 +86,20 @@ export const postActivity = (obj) => {
 
 export const resetDetail = () => {
     return {type: RESET_COUNTRY_DETAIL}
+}
+
+
+export const deleteActivity = (name) => {
+    return async function () {
+        try {
+            const res = await axios.delete(`http://localhost:3001/activities?name=${name}`)
+            return {type: DELETE_ACTIVITY, payload: name}
+        } catch (error) {
+            console.log(error)
+        }
+    }
+} 
+
+export const getActivity = (name) => {
+    return {type: GET_ACTIVITY, payload: name}
 }

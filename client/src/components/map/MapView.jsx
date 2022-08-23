@@ -8,17 +8,20 @@ const MapView = ({lat, long, area}) => {
 
     const dispatch = useDispatch();
 
-    const zoom = useRef(0)
+    const zoom = useRef(0);
     
     const cambioZoom = (area) => {
         if(area < 5000) {
             zoom.current = 10;
             return zoom.current;
-        } else if(area >= 5000 && area < 50000) {
+        } else if(area >= 5000 && area < 25000) {
             zoom.current = 9;
             return zoom.current;
-        } else if(area >= 50000 && area < 70000) {
+        } else if(area >= 25000 && area < 50000) {
             zoom.current = 8;
+            return zoom.current;
+        } else if(area >= 50000 && area < 70000) {
+            zoom.current = 7;
             return zoom.current;
         } else if(area >= 70000 && area < 100000) {
             zoom.current = 6;

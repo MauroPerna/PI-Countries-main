@@ -10,23 +10,9 @@ import {getCountriesFiltered,
 
 
 const SearchBar = ({setCurrentPage}) => {
-    
-    const [input, setInput] = React.useState('')
 
     const dispatch = useDispatch();
     const activities = useSelector((state) => state.activities);
-
-    // manejador de la barra de busqueda
-    const handleInput = (e) => {
-		e.preventDefault();
-		setInput(e.target.value)
-	}
-
-    const onSubmit = (e) => {
-        e.preventDefault();
-        dispatch(getCountriesFiltered(input));
-        setCurrentPage(1)
-    }
 
 
     //manejador del selector de actividades
@@ -63,17 +49,7 @@ const SearchBar = ({setCurrentPage}) => {
 
     return(
         <div className={styles.mainContainer}>
-            <form onSubmit={onSubmit} className={styles.searchBarContainer}>
-                <input type="text" 
-                    name="text"
-                    placeholder="Ingrese un pais, continente"
-                    onChange={handleInput}
-                    className={styles.input}
-                />
-                <button type='submit'>Buscar</button>
-            </form>
-
-
+            
             <div className={styles.filterContainer}>
                 <select onChange={handleContinents}>
                     <option value='All' key='All'>All continents</option>

@@ -1,13 +1,13 @@
 import React, {useEffect, useState}from 'react';
 import styles from './CreateActivity.module.scss';
 import {useDispatch, useSelector} from 'react-redux';
-import {byOrder, postActivity} from '../../redux/actions/index'
+import {byOrder, postActivity} from '../../redux/actions/index';
 
-export function validate(input) {
+function validate(input) {
     let errors = {};
     if(!input.name){
         errors.name = "La actividad debe tener un nombre"
-    } else if(/[$&+,:;=?@#|'<>.^*()%!-]/. test(input.name)){
+    } else if(/[$&+,:;=?@#|'<>.^*()%!-]/.test(input.name)){
         errors.name = "El nombre de la actividad no puede tener caracteres especiales"
     }
 
@@ -41,7 +41,8 @@ const CreateActivity = () => {
         difficulty: "",
         duration: "",
         season: "",
-        countries: []
+        countries: [],
+        image: ""
     })
 
     const [errors, setErrors] = useState({
@@ -49,8 +50,11 @@ const CreateActivity = () => {
         difficulty: "",
         duration: "",
         season: "",
-        countries: []
+        countries: [],
+        image: ""
 	});
+
+    const [file, setFile] = useState("");
 
 
     const dispatch = useDispatch();
@@ -79,21 +83,39 @@ const CreateActivity = () => {
             })
     }
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-        const {name, duration} = input.errors;
-        if(name || duration) {
-            return;
-        } else {
-            dispatch(postActivity(input))
+
+    function previewFiles(file){
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+    
+        reader.onloadend = () => {
             setInput({
-                name: '',
-                difficulty: '',
-                duration: '',
-                season: '',
-                countries: []
-            })
+                ...input,
+                image: reader.result
+            });
+            console.log(reader.result);
         }
+    }
+
+
+    const handleImage = (e) => {
+        e.preventDefault();
+        const file = e.target.files[0];
+        setFile(file);
+        previewFiles(file);
+    }
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        dispatch(postActivity(input))
+        setInput({
+            name: '',
+            difficulty: '',
+            duration: '',
+            season: '',
+            countries: [],
+            image: ''
+        })
     }
 
     useEffect(() => {
@@ -114,6 +136,33 @@ const CreateActivity = () => {
                         <p className={styles.danger}>{errors.name}</p>
                     )
                 }
+
+                <label>Cargue una imagen ilustrativa (opcional):</label>
+                <input type="file" 
+                       name="image"
+                       onChange={handleImage}
+                       required
+                       accept="image/png, image/jpeg, image/gif, image/jpg, image/jfif"
+                />
+                <img src={input.image}/>          
+
+                <label>Paises donde se practica esta actividad:</label>
+                <select multiple required onChange={handleSelect}>
+                    <option value="" hidden>Select country</option>
+                    {
+                    
+                        countries.map(e => (
+                                        <option value={e.id} name="countries" key={e.id} >{e.name}</option>
+                                    )
+                        )
+                    }
+                </select>
+                {   
+                    errors.countries && (
+                        <p className={styles.danger}>{errors.countries}</p>
+                    )
+                }
+
                 <label>Dificultad de la actividad (1 a 5):</label>
                 <input type="range" 
                        name="difficulty"
@@ -173,24 +222,6 @@ const CreateActivity = () => {
                 {   
                     errors.season && (
                         <p className={styles.danger}>{errors.season}</p>
-                    )
-                }
-                
-
-                <label>Paises donde se practica esta actividad:</label>
-                <select multiple required onChange={handleSelect}>
-                    <option value="" hidden>Select country</option>
-                    {
-                    
-                        countries.map(e => (
-                                        <option value={e.id} name="countries" key={e.id} >{e.name}</option>
-                                    )
-                        )
-                    }
-                </select>
-                {   
-                    errors.countries && (
-                        <p className={styles.danger}>{errors.countries}</p>
                     )
                 }
                 {

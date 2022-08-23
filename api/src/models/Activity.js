@@ -19,6 +19,9 @@ module.exports = (sequelize) => {
 		season: {
 			type: DataTypes.ENUM(["Verano", "Otoño", "Invierno", "Primavera"]),
 		},
+		image: {
+			type: DataTypes.STRING
+		}
 	}, {
 		timestamps: false
 	});
