@@ -1,25 +1,36 @@
-.paginado {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    justify-content: center;
-}
-
-.li {
-    text-decoration: none;
-}
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital@1&display=swap');
 
 .nav {
     display: flex;
+    align-items: center;
     justify-content: center;
     width: 100%;
+    margin-top: 40px;
 
     button {
-        margin: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        width: 30px;
+        margin-left: 2px;
+        margin-right: 2px;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #B6B7B8;
+        }
     }
 
-    img {
-        width: 30px;
+    .numOfPage {
+        display: flex;
+        align-items: center;
+    
+        p {
+            margin: 5px;
+            font-family: 'Asap', sans-serif;
+        }
     }
 }
 

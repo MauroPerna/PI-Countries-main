@@ -8,7 +8,8 @@ import {GET_COUNTRIES,
         GET_COUNTRY_DETAIL,
         RESET_COUNTRY_DETAIL,
         GET_ACTIVITY,
-        DELETE_ACTIVITY} from '../actions/index'
+        DELETE_ACTIVITY,
+        RESET_ACTIVITIES} from '../actions/index'
 
 
 const initialState = {
@@ -47,18 +48,21 @@ const rootReducer = (state = initialState, action) => {
                 activities: action.payload
             }
         case  GET_ACTIVITY:
-            const actividades = state.activities;
-            const actividad = actividades.find(a => a.name === action.payload) 
             return {
                 ...state,
-                activityDetail: actividad
+                activityDetail: action.payload
             }
         case DELETE_ACTIVITY:
             const act = state.activities;
-            const activitiesFiltered = act.filter(a => a.name !== action.payload)
+            const activitiesFiltered = act.filter(a => a.id !== action.payload)
             return {
                 ...state,
                 activities: activitiesFiltered
+            }
+        case RESET_ACTIVITIES: 
+            return {
+                ...state,
+                activities: []
             }
         case FILTER_BY_ACTIVITY:
             const activities = state.activities;

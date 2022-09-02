@@ -29,10 +29,10 @@ const MapView = ({lat, long, area}) => {
         } else if(area >= 100000 && area < 1000000){
             zoom.current = 5;
             return zoom.current;
-        } else if (area >= 1000000 && area < 2000000){
+        } else if (area >= 1000000 && area < 3000000){
             zoom.current = 4;
             return zoom.current;
-        } else if (area >= 2000000 && area < 9000000) {
+        } else if (area >= 3000000 && area < 9000000) {
             zoom.current = 3;
             return zoom.current;
         } else {
@@ -50,7 +50,7 @@ const MapView = ({lat, long, area}) => {
     
 
     return(
-        <MapContainer center={[lat, long]} zoom={cambioZoom(area)} style={{width: '100%', height: '100%'}}>
+        <MapContainer center={[lat, long]} zoom={cambioZoom(area)} style={{width: '100%', height: '100%', position: 'relative', zIndex: '50'}}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

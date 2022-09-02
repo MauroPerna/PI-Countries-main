@@ -1,10 +1,10 @@
-import React, {useEffect, useState}  from 'react';
+import React, {useEffect, useState, useRef}  from 'react';
 import { getCountries } from '../../redux/actions';
 import {useSelector, useDispatch}  from 'react-redux';
 import Card from '../country_card/Card';
+import ReactLoading from 'react-loading';
 import styles from './Cards.module.scss';
 import Paginado from '../paginado/Paginado';
-import Loanding from '../loanding/Loanding';
 
 
 const Cards = ({currentPage, setCurrentPage}) => {
@@ -20,17 +20,19 @@ const Cards = ({currentPage, setCurrentPage}) => {
     const indexOfLastCountry = currentPage * countriesPerPage; // 10
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage; // 0
 
+    let currentCountries = useRef([]);
+
     if(currentPage === 1) {
         if(countriesFiltered.length > 0) {
-            var currentCountries = countriesFiltered.slice(0, 9)
+            currentCountries = countriesFiltered.slice(0, 9)
         } else {
-            var currentCountries = countries.slice(0, 9)
+            currentCountries = countries.slice(0, 9)
         }
     } else {
         if(countriesFiltered.length > 0) {
-            var currentCountries = countriesFiltered.slice(indexOfFirstCountry - 1, indexOfLastCountry - 1)
+            currentCountries = countriesFiltered.slice(indexOfFirstCountry - 1, indexOfLastCountry - 1)
         } else {
-            var currentCountries = countries.slice(indexOfFirstCountry - 1, indexOfLastCountry - 1)
+            currentCountries = countries.slice(indexOfFirstCountry - 1, indexOfLastCountry - 1)
         }
     }
 
@@ -54,11 +56,15 @@ const Cards = ({currentPage, setCurrentPage}) => {
                 setCurrentPage={setCurrentPage}
             />
             {
-                currentCountries && currentCountries.map(country => <Card name={country.name}
+
+                currentCountries.length > 0 ? currentCountries.map(country => <Card name={country.name}
                                                                           img={country.img}
                                                                           continent={country.continent}
                                                                           id={country.id}
                                                                           key={country.id}/>)
+                :   <div className={styles.loanding}>
+                        <ReactLoading type="spin" color="fff" height={300} width={300} />
+                    </div>
                 
             }
         </div>

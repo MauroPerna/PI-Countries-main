@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react';
 import styles from './SearchBar.module.scss';
 import {useDispatch, useSelector} from 'react-redux';
-import {getCountriesFiltered,
-        getActivities,
+import {getActivities,
         byActivity,
         byContinent,
         byOrder,

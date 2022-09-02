@@ -2,6 +2,7 @@ import React, {useEffect, useState}from 'react';
 import styles from './CreateActivity.module.scss';
 import {useDispatch, useSelector} from 'react-redux';
 import {byOrder, postActivity} from '../../redux/actions/index';
+import {FaUpload} from "react-icons/fa";
 
 function validate(input) {
     let errors = {};
@@ -55,6 +56,9 @@ const CreateActivity = () => {
 	});
 
     const [file, setFile] = useState("");
+    const [nameFile, setNameFile] = useState("");
+
+    const hiddenFileInput = React.useRef(null);
 
 
     const dispatch = useDispatch();
@@ -101,9 +105,14 @@ const CreateActivity = () => {
     const handleImage = (e) => {
         e.preventDefault();
         const file = e.target.files[0];
+        setNameFile(file.name);
         setFile(file);
         previewFiles(file);
     }
+
+    const handleClick = event => {
+        hiddenFileInput.current.click();
+    };
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -137,14 +146,30 @@ const CreateActivity = () => {
                     )
                 }
 
-                <label>Cargue una imagen ilustrativa (opcional):</label>
-                <input type="file" 
-                       name="image"
-                       onChange={handleImage}
-                       required
-                       accept="image/png, image/jpeg, image/gif, image/jpg, image/jfif"
-                />
-                <img src={input.image}/>          
+
+                <div className={styles.inputFileContainer}>
+                    <label>Cargue una imagen ilustrativa (opcional):</label>
+                    <div className={styles.divFileContainer}>
+                        <div className={styles.uploadImgContainer}>
+                            <button onClick={handleClick} className={styles.btnUpload}>
+                                <FaUpload/>
+                            </button>
+                            <span>{nameFile}</span>
+                            <input type="file"
+                                id="archivo" 
+                                name="image"
+                                onChange={handleImage}
+                                required
+                                ref={hiddenFileInput}
+                                style={{display:'none'}}
+                                accept="image/png, image/jpeg, image/gif, image/jpg, image/jfif"
+                            />
+                        </div>          
+                        <div className={styles.previewImgContainer}>
+                            <img src={input.image} className={styles.imgUpload}/>
+                        </div>
+                    </div>
+                </div>
 
                 <label>Paises donde se practica esta actividad:</label>
                 <select multiple required onChange={handleSelect}>
@@ -224,9 +249,11 @@ const CreateActivity = () => {
                         <p className={styles.danger}>{errors.season}</p>
                     )
                 }
-                {
-                    errors.name || errors.duration || errors.season || errors.difficulty || errors.countries ? <button type="submit" disabled>Crear</button> : <button type="submit">Crear</button>
-                }
+                <div className={styles.containerBtnCreate}>
+                    {
+                        errors.name || errors.duration || errors.season || errors.difficulty || errors.countries ? <button type="submit" disabled className={styles.btnCreate}>Crear</button> : <button type="submit" className={styles.btnCreate}>Crear</button>
+                    }
+                </div>
             </form>
         </div>
     )

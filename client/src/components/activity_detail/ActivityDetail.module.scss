@@ -5,11 +5,203 @@
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-image: url("../../img/nubes.jpg");
     background-repeat: repeat;
     font-family: 'Asap', sans-serif;
+
+    .infoActivityContainer{
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        height: 100%;
+        justify-content: center;
+        margin-top: 100px;
+        position: relative;
+
+        img {
+            width: 100%;
+            text-align: center;
+            z-index: 1;
+            opacity: 0.6;
+
+            @media screen and (max-width: 1200px) {
+                width: 95%;
+            }
+
+            @media screen and (max-width: 600px) {
+                width: 95%;
+            }
+        }
+
+        .infoActivity {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            z-index: 5;
+
+            section{
+                width: 28%;
+                height: 90%;
+                padding: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                flex-wrap: wrap;
+
+                p{
+                    color: #fff;
+                }
+
+
+                .actImg {
+                    max-width: 200px;
+                    margin-top: 20px;
+
+                    @media screen and (max-width: 1200px) {
+                        margin-top: 0px;
+                    }
+                }
+
+                @media screen and (max-width: 1200px) {
+                    width: 100%;
+                    flex-direction: row;
+                    height: 25%;
+                    
+                    * {
+                        margin: 5px;
+                    }
+                }
+
+                @media screen and (max-width: 600px) {
+                    width: 100%;
+                    flex-direction: row;
+                    
+                    * {
+                        margin: 5px;
+                    }
+                }
+            }
+
+
+            .sectionCountries {
+                width: 44%;
+                font-size: 12px;
+
+                label {
+                    font-size: 20px;
+                }
+
+
+                .countriesNames{
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: wrap;
+
+
+                    p {
+                        margin: 10px;
+                    }
+                }
+                
+                @media screen and (max-width: 1200px) {
+                    width: 100%;
+                }
+
+                @media screen and (max-width: 600px) {
+                    width: 100%;
+                }
+            }
+
+            @media screen and (max-width: 1200px) {
+                flex-direction: column;
+                
+                .section1 {
+                    height: 140px;
+                    flex-wrap: wrap;
+                    flex-direction: column;
+                }
+            }
+            
+
+            @media screen and (max-width: 600px) {
+                flex-direction: column;
+                
+                .section1 {
+                    width: 200px;
+                    height: 250px;
+                    flex-wrap: wrap;
+                    flex-direction: row;
+                }
+            }
+        }
+
+        @media screen and (max-width: 1200px) {
+            width: 80%;
+            height: 650px;
+            margin-top: 150px;
+            background-color: #812036;
+            border-radius: 15px;
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+            .pergamino {
+                display: none;
+            }
+
+            .imgContainer {
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            height: 900;
+        }
+
+        @media screen and (max-width: 600px) {
+            width: 80%;
+            height: 900px;
+            margin-top: 150px;
+            background-color: #812036;
+            border-radius: 15px;
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+            .pergamino {
+                display: none;
+            }
+
+            .imgContainer {
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+
+    .btnDelete{
+        width: 50%;
+        height: 50px;
+        cursor: pointer;
+        border-radius: 10px;
+        border: 1px solid #000;
+
+        &:hover {
+            background-color: #B6B7B8;
+        }
+
+        @media screen and (max-width: 1200px) {
+            margin-top: 15px;
+        }
+
+        @media screen and (max-width: 600px) {
+            margin-top: 15px;
+        }
+    }
 
     form {
         display: flex;
@@ -17,7 +209,7 @@
         width: 50%;
         height: 100%;
         justify-content: center;
-        margin-top: 150px;
+        margin-top: 50px;
 
         label {
             font-size: 20px;
@@ -134,14 +326,36 @@
             }
         }
 
-        @media screen and (max-width: 849px) {
+        .buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 50px;
+            margin-top: 50px;
+
+            .btnModify {
+                width: 100px;
+                height: 50px;
+                border: 1px solid;
+                border-radius: 10px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #B6B7B8;
+                }
+                
+            }
+        }
+
+        @media screen and (max-width: 1200px) {
             width: 80%;
         }
 
         @media screen and (max-width: 600px) {
             width: 80%;
         }
+
     }
+
 
 }
 

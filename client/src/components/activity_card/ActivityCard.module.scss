@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital@1&display=swap');
+
+.actCardContainer {
+    margin: 20px;
+    border: 1px solid #000;
+    width: 300px;
+    height: 300px;
+    box-sizing: border-box;
+    padding: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Asap', sans-serif;
+    background-color: #857C7E;
+
+    a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none; 
+    }
+
+    .img {
+        width: 100%;
+        height: 150px;
+    }
+}

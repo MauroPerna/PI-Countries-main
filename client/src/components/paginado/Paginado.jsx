@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './Paginado.module.scss'
-import arrowback from '../../img/arrowback.png';
-import arrowfront from '../../img/arrowfront.png';
+import {FaAngleDoubleRight} from "react-icons/fa";
+import {FaAngleDoubleLeft} from "react-icons/fa";
 
 
 export default function Paginado({countriesPerPage, countries, paginado, currentPage, setCurrentPage}){
+    
+    const maxPag = Math.ceil(((countries - 9)/countriesPerPage) + 1);
     const pageNumbers = [];
 
     const handleNextBtn = () => {
@@ -25,7 +27,7 @@ export default function Paginado({countriesPerPage, countries, paginado, current
             <button onClick={handlePrevBtn}
                     disabled={currentPage === 1 ? true : false}
             >
-                <img src={arrowback} styles={styles.arrow}/>
+                <FaAngleDoubleLeft/>
             </button>
             {/* Esto hace el filtrado con numeros  */}
             {/* <ul className={styles.paginado}>
@@ -39,10 +41,16 @@ export default function Paginado({countriesPerPage, countries, paginado, current
                     })
                 }
             </ul> */}
+            <div className={styles.numOfPage}>
+                <p>Página</p>
+                <p>{currentPage}</p>
+                <p>de</p>
+                <p>{maxPag}</p>
+            </div>
             <button onClick={handleNextBtn}
                     disabled={currentPage === Math.ceil(((countries - 9)/countriesPerPage) + 1) ? true : false}
             >
-                <img src={arrowfront} styles={styles.arrow}/>
+                <FaAngleDoubleRight/>
             </button>
         </nav>
     )
