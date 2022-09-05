@@ -9,6 +9,7 @@
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^13.1.1",
     "axios": "^0.27.2",
+    "dotenv": "^16.0.2",
     "leaflet": "^1.7.1",
     "node-sass": "^7.0.1",
     "react": "^17.0.2",

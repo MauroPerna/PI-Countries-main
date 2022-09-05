@@ -17,9 +17,10 @@ export const GET_ACTIVITY = 'GET_ACTIVITY';
 export const DELETE_ACTIVITY = 'DELETE_ACTIVITY';
 export const RESET_ACTIVITIES = 'RESET_ACTIVITIES';
 
+
 export const getCountries = () => {
     return async function(dispatch) {
-        return fetch('http://localhost:3001/countries')
+        return fetch(`${process.env.REACT_APP_API}/countries`)
 			.then(response => response.json())
 			.then(info => dispatch({type:GET_COUNTRIES, payload: info}))
     } 
@@ -27,7 +28,7 @@ export const getCountries = () => {
 
 export const getCountriesFiltered = (condition) => {
     return async function(dispatch) {
-        return fetch(`http://localhost:3001/countries?name=${condition}`)
+        return fetch(`${process.env.REACT_APP_API}/countries?name=${condition}`)
 			.then(response => response.json())
 			.then(info => dispatch({type:GET_COUNTRIES_FILTERED, payload: info}))
     } 
@@ -35,7 +36,7 @@ export const getCountriesFiltered = (condition) => {
 
 export const getCountryDetail = (id) => {
     return async function(dispatch) {
-        return fetch(`http://localhost:3001/countries/${id}`)
+        return fetch(`${process.env.REACT_APP_API}/countries/${id}`)
 			.then(response => response.json())
 			.then(info => dispatch({type:GET_COUNTRY_DETAIL, payload: info}))
     } 
@@ -43,7 +44,7 @@ export const getCountryDetail = (id) => {
 
 export const getActivities = () => {
     return async function(dispatch) {
-        return fetch('http://localhost:3001/activities')
+        return fetch(`${process.env.REACT_APP_API}/activities`)
             .then(response => response.json())
             .then(info => dispatch({type:GET_ACTIVITIES, payload: info}))
     }
@@ -55,7 +56,7 @@ export const byActivity = (activity) => {
 
 export const byContinent = (continent) => {
     return async function(dispatch) {
-        return fetch(`http://localhost:3001/countries?continent=${continent}`)
+        return fetch(`${process.env.REACT_APP_API}/countries?continent=${continent}`)
             .then(response => response.json())
             .then(info => dispatch({type: FILTER_BY_CONTINENT, payload: info}))
     }
@@ -63,7 +64,7 @@ export const byContinent = (continent) => {
 
 export const byOrder = (order) => {
     return async function(dispatch) {
-        return fetch(`http://localhost:3001/countries?order=${order}`)
+        return fetch(`${process.env.REACT_APP_API}/countries?order=${order}`)
             .then(response => response.json())
             .then(info => dispatch({type: FILTER_BY_ORDER, payload: info}))
     }
@@ -71,7 +72,7 @@ export const byOrder = (order) => {
 
 export const byPopulation = (population) => {
     return async function(dispatch) {
-        return fetch(`http://localhost:3001/countries?population=${population}`)
+        return fetch(`${process.env.REACT_APP_API}/countries?population=${population}`)
             .then(response => response.json())
             .then(info => dispatch({type: FILTER_BY_POPULATION, payload: info}))
     }
@@ -80,7 +81,7 @@ export const byPopulation = (population) => {
 export const postActivity = (obj) => {
     return async function () {
         try {
-            const res = await axios.post('http://localhost:3001/activities', obj)
+            const res = await axios.post(`${process.env.REACT_APP_API}/activities`, obj)
             MySwal.fire({
                 title: '👍',
                 footer: 'La actividad se creo exitosamente',
@@ -128,7 +129,7 @@ export const deleteActivity = (id) => {
               reverseButtons: true
             }).then((result) => {
               if (result.isConfirmed) {
-                axios.delete(`http://localhost:3001/activities?id=${id}`)
+                axios.delete(`${process.env.REACT_APP_API}/activities?id=${id}`)
                 swalWithBootstrapButtons.fire(
                   'Borrado!',
                   'La actividad ha sido borrada.',
@@ -165,7 +166,7 @@ export const deleteActivity = (id) => {
 
 export const getActivity = (id) => {
     return async function(dispatch) {
-        return fetch(`http://localhost:3001/activities?id=${id}`)
+        return fetch(`${process.env.REACT_APP_API}/activities?id=${id}`)
             .then(response => response.json())
             .then(info => dispatch({type: GET_ACTIVITY, payload: info}))
     }
@@ -174,7 +175,7 @@ export const getActivity = (id) => {
 export const putActivity = (obj) => {
     return async function () {
         try {
-            const res = await axios.put('http://localhost:3001/activities', obj)
+            const res = await axios.put(`${process.env.REACT_APP_API}/activities`, obj)
             MySwal.fire({
                 title: '👍',
                 footer: 'La actividad se borro exitosamente',
