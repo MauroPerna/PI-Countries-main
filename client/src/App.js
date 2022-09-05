@@ -2,7 +2,7 @@ import React from "react"
 import { Route } from "react-router-dom";
 import Landing from './components/landing/Landing';
 import Home from './components/home/Home';
-import CountryDetails from './components/country_detail/CountryDetail'
+import CountryDetails from './components/country_detail/CountryDetail';
 import CreateActivity from './components/create_activities/CreateActivities';
 import Nav from "./components/nav/Nav";
 import ModifiedActivity from './components/modified_activity/ModifiedActivity';

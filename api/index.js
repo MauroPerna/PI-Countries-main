@@ -24,7 +24,7 @@ const axios = require('axios');
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(3001, async () => {
+  server.listen(process.env.PORT, () => {
     axios.get('https://restcountries.com/v3/all')
     .then(response => {
         response.data.forEach(async (r)=> {
@@ -46,6 +46,6 @@ conn.sync({ force: true }).then(() => {
     .catch(error => {
       console.log(error);
     });
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+    console.log(`%s listening at ${process.env.PORT}`); // eslint-disable-line no-console
   });
 });
