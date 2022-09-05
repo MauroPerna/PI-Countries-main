@@ -46,6 +46,6 @@ conn.sync({ force: true }).then(() => {
     .catch(error => {
       console.log(error);
     });
-    console.log(`%s listening at ${process.env.PORT}`); // eslint-disable-line no-console
+    console.log(`%s listening at 3001`); // eslint-disable-line no-console
   });
 });
