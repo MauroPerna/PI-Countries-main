@@ -19,7 +19,7 @@ const Landing = () => {
             <div className={styles.capa}>
                 <img src={avion} className={styles.avion} alt="Avion de papel"/>
                 <div>
-                    <h1>La app que necesitas para armar tus vaciones</h1>
+                    <h1>La app que necesitas para armar tus vacaciones</h1>
                     <NavLink to='/home'><button>INGRESA</button></NavLink>
                 </div>
             </div>
