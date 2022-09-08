@@ -14,7 +14,7 @@ function validate(input) {
     let errors = {};
     if(!input.name){
         errors.name = "La actividad debe tener un nombre"
-    } else if(/[$&+,:;=?@#|'<>.^*()%!-]/.test(input.name)){
+    } else if(/[$&+,:;=?@#|'<>.^*()%!-\s]/.test(input.name)){
         errors.name = "El nombre de la actividad no puede tener caracteres especiales"
     }
 
