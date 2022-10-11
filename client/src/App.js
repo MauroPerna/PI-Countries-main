@@ -8,6 +8,8 @@ import Nav from "./components/nav/Nav";
 import ModifiedActivity from './components/modified_activity/ModifiedActivity';
 import ActivityDetail from './components/activity_detail/ActivityDetail';
 
+// ok
+
 function App() {
 	return (
 		<React.Fragment>
